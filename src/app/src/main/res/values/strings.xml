@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Wochentagsberechnung</string>
+    <string name="button_name">Wochentag berechnen</string>
+    <string name="hint_day">Tag eingeben</string>
+    <string name="hint_month">Monat eingeben</string>
+    <string name="hint_year">Jahr eingeben</string>
+</resources>
