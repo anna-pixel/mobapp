@@ -5,4 +5,6 @@
     <string name="year_hint">Jahr eingeben</string>
     <string name="button_text">BERECHNEN</string>
     <string name="placeholder_result">Ergebnis</string>
+    <string name="back_button">Zurück</string>
+    <string name="help_btn">Hilfe!</string>
 </resources>
