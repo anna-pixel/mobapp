@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class Startseite extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     if (!finalResult.equals("")) {
 
-                        Intent intent1 = new Intent(this, Main2Activity.class);
+                        Intent intent1 = new Intent(this, Ergebnis.class);
                         intent1.putExtra("result", finalResult);
                         startActivity(intent1);
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.helpBtn:
-                Intent intent2 = new Intent(this, Main3Activity.class);
+                Intent intent2 = new Intent(this, Hilfe.class);
                 startActivity(intent2);
                 break;
             default:

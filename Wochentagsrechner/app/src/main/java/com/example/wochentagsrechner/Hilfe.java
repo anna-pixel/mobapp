@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Main3Activity extends AppCompatActivity implements View.OnClickListener{
+public class Hilfe extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

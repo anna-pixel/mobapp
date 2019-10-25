@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
+public class Ergebnis extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
