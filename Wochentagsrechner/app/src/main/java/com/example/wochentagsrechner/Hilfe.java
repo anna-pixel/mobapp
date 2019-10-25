@@ -11,7 +11,7 @@ public class Hilfe extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.hilfe);
 
         Button backBtn = (Button) findViewById(R.id.helpBackBtn);
         backBtn.setOnClickListener(this);

@@ -14,7 +14,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.startseite);
 
         Button calcBtn = (Button) findViewById(R.id.calcBtn); //find in Resources -> id -> calcBtn
         calcBtn.setOnClickListener(this);

@@ -13,10 +13,13 @@ public class Ergebnis extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.ergebnis);
 
         Button backBtn = (Button) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(this);
+
+        Button helpBtn = (Button) findViewById(R.id.ergebnisHelpBtn);
+        helpBtn.setOnClickListener(this);
 
         Intent intent = getIntent();
         String result = intent.getStringExtra("result");
@@ -27,6 +30,19 @@ public class Ergebnis extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        finish();
+
+        switch (v.getId()){
+            case R.id.backBtn:
+                finish();
+                break;
+            case R.id.ergebnisHelpBtn:
+                Intent intent2 = new Intent(this, Hilfe.class);
+                startActivity(intent2);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + v.getId());
+        }
+
+
     }
 }
