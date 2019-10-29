@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Startseite extends AppCompatActivity implements View.OnClickListener{
 
     @Override
@@ -32,7 +35,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
         switch(v.getId()){
             case R.id.calcBtn:
                 int day, month, year;
-                String finalResult;
+                String finalResult = "";
 
                 EditText dayNumEditText = (EditText) findViewById(R.id.dayNumEditText);
                 EditText monthNumEditText = (EditText) findViewById(R.id.monthNumEditText);
@@ -49,7 +52,9 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
                     month = Integer.parseInt(monthNumEditText.getText().toString());
                     year = Integer.parseInt(yearNumEditText.getText().toString());
 
-                    finalResult = calculateDate(day, month, year);
+                    if(checkDate(day, month, year)){
+                        finalResult = calculateDate(day, month, year);
+                    }
 
                     if (!finalResult.equals("")) {
 
@@ -60,6 +65,8 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
                     } else {
                         Toast.makeText(this, "Bitte Datum eingeben!", Toast.LENGTH_SHORT).show();
                     }
+                }else {
+                    Toast.makeText(this, "Bitte Datum eingeben!", Toast.LENGTH_SHORT).show();
                 }
 
                 break;
@@ -74,6 +81,20 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
         }
+    }
+
+    private boolean checkDate(int day, int month, int year) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        String s = "" + day + "." + month + "." + year;
+        try {
+            dateFormat.setLenient(false);
+            dateFormat.parse(s);
+            return true;
+        } catch (ParseException pe) {
+            Toast.makeText(this, "Bitte valides Datum eingeben!", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+
     }
 
     public String calculateDate(int day, int month, int year){
