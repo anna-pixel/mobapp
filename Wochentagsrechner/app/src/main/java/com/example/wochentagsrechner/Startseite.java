@@ -21,6 +21,9 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
 
         Button help = (Button) findViewById(R.id.helpBtn);
         help.setOnClickListener(this);
+
+        Button db = (Button) findViewById(R.id.DBBtn);
+        db.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +66,10 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
             case R.id.helpBtn:
                 Intent intent2 = new Intent(this, Hilfe.class);
                 startActivity(intent2);
+                break;
+            case R.id.DBBtn:
+                Intent inten3 = new Intent(this, Database.class);
+                startActivity(inten3);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());

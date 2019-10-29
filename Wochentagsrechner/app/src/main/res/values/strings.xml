@@ -7,4 +7,5 @@
     <string name="placeholder_result">Ergebnis</string>
     <string name="back_button">Zurück</string>
     <string name="help_btn">Hilfe!</string>
+    <string name="toDB_Btn">Bisherige Berechnungen</string>
 </resources>

@@ -21,6 +21,9 @@ public class Ergebnis extends AppCompatActivity implements View.OnClickListener 
         Button helpBtn = (Button) findViewById(R.id.ergebnisHelpBtn);
         helpBtn.setOnClickListener(this);
 
+        Button btnToDB = (Button) findViewById(R.id.btnToDB);
+        btnToDB.setOnClickListener(this);
+
         Intent intent = getIntent();
         String result = intent.getStringExtra("result");
 
@@ -38,6 +41,10 @@ public class Ergebnis extends AppCompatActivity implements View.OnClickListener 
             case R.id.ergebnisHelpBtn:
                 Intent intent2 = new Intent(this, Hilfe.class);
                 startActivity(intent2);
+                break;
+            case R.id.btnToDB:
+                Intent intent3 = new Intent(this, Database.class);
+                startActivity(intent3);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
