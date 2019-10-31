@@ -117,7 +117,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
         return false;
     }
 
-    public String calculateDate(int day, int month, int year){
+    private String calculateDate(int day, int month, int year){
         /* Wochentagsberechnung anhand folgender Formel: http://www.straub.as/java/basic/Lwochentag.html
            gibt berechneten Wochentag als fertigen String zurück
         */
@@ -137,20 +137,32 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
 
             w_day = (day + 2 * h + (3 * h + 3) / 5 + k + k / 4 - k / 100 + k / 400 + 1) % 7;
 
-            if (w_day == 0)
-                result = "Sonntag";
-            else if (w_day == 1)
-                result = "Montag";
-            else if (w_day == 2)
-                result = "Dienstag";
-            else if (w_day == 3)
-                result = "Mittwoch";
-            else if (w_day == 4)
-                result = "Donnerstag";
-            else if (w_day == 5)
-                result = "Freitag";
-            else if (w_day == 6)
-                result = "Samstag";
+            switch (w_day){
+                case 0:
+                    result = "Sonntag";
+                    break;
+                case 1:
+                    result = "Montag";
+                    break;
+                case 2:
+                    result = "Dienstag";
+                    break;
+                case 3:
+                    result = "Mittwoch";
+                    break;
+                case 4:
+                    result = "Donnerstag";
+                    break;
+                case 5:
+                    result = "Freitag";
+                    break;
+                case 6:
+                    result = "Samstag";
+                    break;
+                default:
+                    result = "";
+                    break;
+            }
 
             finalResult = "Der " + day + "." + month + "." + year + " ist ein " + result + ".";
         }
