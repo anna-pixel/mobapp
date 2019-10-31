@@ -27,19 +27,21 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
 
         Button db = (Button) findViewById(R.id.DBBtn);
         db.setOnClickListener(this);
+
+        Button clearBtn = (Button) findViewById(R.id.clearBtn);
+        clearBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        EditText dayNumEditText = (EditText) findViewById(R.id.dayNumEditText);
+        EditText monthNumEditText = (EditText) findViewById(R.id.monthNumEditText);
+        EditText yearNumEditText = (EditText) findViewById(R.id.yearNumEditText);
 
         switch(v.getId()){
             case R.id.calcBtn:
                 int day, month, year;
                 String finalResult = "";
-
-                EditText dayNumEditText = (EditText) findViewById(R.id.dayNumEditText);
-                EditText monthNumEditText = (EditText) findViewById(R.id.monthNumEditText);
-                EditText yearNumEditText = (EditText) findViewById(R.id.yearNumEditText);
 
                 String buff_day, buff_month, buff_year;
                 buff_day = dayNumEditText.getText().toString();
@@ -63,21 +65,30 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
                         startActivity(intent1);
 
                     } else {
-                        Toast.makeText(this, "Bitte Datum eingeben!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.no_input, Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    Toast.makeText(this, "Bitte Datum eingeben!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.no_input, Toast.LENGTH_SHORT).show();
                 }
 
                 break;
+
+            case R.id.clearBtn:
+                dayNumEditText.getText().clear();
+                monthNumEditText.getText().clear();
+                yearNumEditText.getText().clear();
+                break;
+
             case R.id.helpBtn:
                 Intent intent2 = new Intent(this, Hilfe.class);
                 startActivity(intent2);
                 break;
+
             case R.id.DBBtn:
-                Intent inten3 = new Intent(this, Database.class);
-                startActivity(inten3);
+                Intent intent3 = new Intent(this, Database.class);
+                startActivity(intent3);
                 break;
+
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
         }
@@ -91,7 +102,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
             dateFormat.parse(s);
             return true;
         } catch (ParseException pe) {
-            Toast.makeText(this, "Bitte valides Datum eingeben!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_valid_date, Toast.LENGTH_SHORT).show();
         }
         return false;
 
