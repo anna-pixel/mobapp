@@ -14,10 +14,14 @@ import java.text.SimpleDateFormat;
 
 public class Startseite extends AppCompatActivity implements View.OnClickListener{
 
+    DatabaseHelper myDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startseite);
+
+        myDB = new DatabaseHelper(this);
 
         // Button über die ID finden und jedem Button einen OnClickListener hinzufügen
         Button calcBtn = (Button) findViewById(R.id.calcBtn); //find in Resources -> id -> calcBtn
