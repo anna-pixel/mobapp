@@ -19,6 +19,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startseite);
 
+        // Button über die ID finden und jedem Button einen OnClickListener hinzufügen
         Button calcBtn = (Button) findViewById(R.id.calcBtn); //find in Resources -> id -> calcBtn
         calcBtn.setOnClickListener(this);
 
@@ -34,6 +35,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+        //Textfelder über ID in Ressourcen finden
         EditText dayNumEditText = (EditText) findViewById(R.id.dayNumEditText);
         EditText monthNumEditText = (EditText) findViewById(R.id.monthNumEditText);
         EditText yearNumEditText = (EditText) findViewById(R.id.yearNumEditText);
@@ -43,18 +45,22 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
                 int day, month, year;
                 String finalResult = "";
 
+                //Zwischenspeichern des Inputs als String
                 String buff_day, buff_month, buff_year;
                 buff_day = dayNumEditText.getText().toString();
                 buff_month = monthNumEditText.getText().toString();
                 buff_year = yearNumEditText.getText().toString();
 
-                if(!(buff_day.equals("")) || !(buff_month.equals("")) || !(buff_year.equals(""))) { //keinen Input abfangen
+                //Prüfen, ob String nicht leer ist -> keinen Input abfangen
+                if(!(buff_day.equals("")) || !(buff_month.equals("")) || !(buff_year.equals(""))) {
 
                     day = Integer.parseInt(dayNumEditText.getText().toString());
                     month = Integer.parseInt(monthNumEditText.getText().toString());
                     year = Integer.parseInt(yearNumEditText.getText().toString());
 
+                    //Input auf valides Datum prüfen
                     if(checkDate(day, month, year)){
+                        //Wochentag berechnen
                         finalResult = calculateDate(day, month, year);
                     }
 
@@ -70,21 +76,23 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
                 }else {
                     Toast.makeText(this, R.string.no_input, Toast.LENGTH_SHORT).show();
                 }
-
                 break;
 
             case R.id.clearBtn:
+                //löscht Eingaben
                 dayNumEditText.getText().clear();
                 monthNumEditText.getText().clear();
                 yearNumEditText.getText().clear();
                 break;
 
             case R.id.helpBtn:
+                //Aufruf der Hilfe-Seite
                 Intent intent2 = new Intent(this, Hilfe.class);
                 startActivity(intent2);
                 break;
 
             case R.id.DBBtn:
+                //Aufruf der Datenbank-Seite
                 Intent intent3 = new Intent(this, Database.class);
                 startActivity(intent3);
                 break;
@@ -95,6 +103,8 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
     }
 
     private boolean checkDate(int day, int month, int year) {
+        //fügt Integer-Werte zu einem String zusammen und prüft, ob dieser zu einem SimpleDate umgewandelt werden kann
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         String s = "" + day + "." + month + "." + year;
         try {
@@ -105,10 +115,13 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(this, R.string.no_valid_date, Toast.LENGTH_SHORT).show();
         }
         return false;
-
     }
 
     public String calculateDate(int day, int month, int year){
+        /* Wochentagsberechnung anhand folgender Formel: http://www.straub.as/java/basic/Lwochentag.html
+           gibt berechneten Wochentag als fertigen String zurück
+        */
+
         String result = "";
         String finalResult = "";
 
