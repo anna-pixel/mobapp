@@ -54,8 +54,8 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
 
                 //Prüfen, ob String nicht leer ist -> keinen Input abfangen
                 if(!(dayNumEditText.getText().toString().equals(""))
-                        | !(monthNumEditText.getText().toString().equals(""))
-                        | !(yearNumEditText.getText().toString().equals(""))) {
+                        && !(monthNumEditText.getText().toString().equals(""))
+                        && !(yearNumEditText.getText().toString().equals(""))) {
 
                     day = Integer.parseInt(dayNumEditText.getText().toString());
                     month = Integer.parseInt(monthNumEditText.getText().toString());
