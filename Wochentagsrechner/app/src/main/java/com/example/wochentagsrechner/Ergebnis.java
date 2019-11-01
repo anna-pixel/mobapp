@@ -26,9 +26,13 @@ public class Ergebnis extends AppCompatActivity implements View.OnClickListener 
 
         Intent intent = getIntent();
         String result = intent.getStringExtra("result");
+        int day, month, year;
+        day  = intent.getIntExtra("input_day", 0);
+        month = intent.getIntExtra("input_month", 0);
+        year = intent.getIntExtra("input_year", 0);
 
         TextView resultTextView = (TextView) findViewById(R.id.resultTextView);
-        resultTextView.setText(result);
+        resultTextView.setText("Der " + day + "."+ month + "." + year + " ist ein " + result);
     }
 
     @Override

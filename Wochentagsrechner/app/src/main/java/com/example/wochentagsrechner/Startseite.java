@@ -44,19 +44,18 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
         EditText monthNumEditText = (EditText) findViewById(R.id.monthNumEditText);
         EditText yearNumEditText = (EditText) findViewById(R.id.yearNumEditText);
 
+        EditText commentEditText = (EditText) findViewById(R.id.commentEditText);
+        String comment = commentEditText.getText().toString();
+
         switch(v.getId()){
             case R.id.calcBtn:
                 int day, month, year;
-                String finalResult = "";
-
-                //Zwischenspeichern des Inputs als String
-                String buff_day, buff_month, buff_year;
-                buff_day = dayNumEditText.getText().toString();
-                buff_month = monthNumEditText.getText().toString();
-                buff_year = yearNumEditText.getText().toString();
+                String result = "";
 
                 //Prüfen, ob String nicht leer ist -> keinen Input abfangen
-                if(!(buff_day.equals("")) || !(buff_month.equals("")) || !(buff_year.equals(""))) {
+                if(!(dayNumEditText.getText().toString().equals(""))
+                        | !(monthNumEditText.getText().toString().equals(""))
+                        | !(yearNumEditText.getText().toString().equals(""))) {
 
                     day = Integer.parseInt(dayNumEditText.getText().toString());
                     month = Integer.parseInt(monthNumEditText.getText().toString());
@@ -65,20 +64,29 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
                     //Input auf valides Datum prüfen
                     if(checkDate(day, month, year)){
                         //Wochentag berechnen
-                        finalResult = calculateDate(day, month, year);
+                        result = calculateDate(day, month, year);
                     }
 
-                    if (!finalResult.equals("")) {
+                    if (!result.equals("")) {
 
                         Intent intent1 = new Intent(this, Ergebnis.class);
-                        intent1.putExtra("result", finalResult);
+                        intent1.putExtra("result", result);
+                        intent1.putExtra("input_day", day);
+                        intent1.putExtra("input_month", month);
+                        intent1.putExtra("input_year", year);
+
+                        String input = "" + day + "." + month + "." + year;
+                        boolean isSaved = myDB.insertData(input, result, comment);
+                        if(isSaved) {
+                            Toast.makeText(this, R.string.save_success, Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(this, R.string.save_fail, Toast.LENGTH_LONG).show();
+                        }
                         startActivity(intent1);
 
-                    } else {
-                        Toast.makeText(this, R.string.no_input, Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    Toast.makeText(this, R.string.no_input, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.no_input, Toast.LENGTH_LONG).show();
                 }
                 break;
 
@@ -87,6 +95,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
                 dayNumEditText.getText().clear();
                 monthNumEditText.getText().clear();
                 yearNumEditText.getText().clear();
+                commentEditText.getText().clear();
                 break;
 
             case R.id.helpBtn:
@@ -116,7 +125,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
             dateFormat.parse(s);
             return true;
         } catch (ParseException pe) {
-            Toast.makeText(this, R.string.no_valid_date, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_valid_date, Toast.LENGTH_LONG).show();
         }
         return false;
     }
@@ -125,9 +134,8 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
         /* Wochentagsberechnung anhand folgender Formel: http://www.straub.as/java/basic/Lwochentag.html
            gibt berechneten Wochentag als fertigen String zurück
         */
-
+        String[] result_day = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
         String result = "";
-        String finalResult = "";
 
         if ((day != 0) || (month != 0) || (year != 0)) { //Eingabe von 0 abfangen
 
@@ -141,36 +149,9 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
 
             w_day = (day + 2 * h + (3 * h + 3) / 5 + k + k / 4 - k / 100 + k / 400 + 1) % 7;
 
-            switch (w_day){
-                case 0:
-                    result = "Sonntag";
-                    break;
-                case 1:
-                    result = "Montag";
-                    break;
-                case 2:
-                    result = "Dienstag";
-                    break;
-                case 3:
-                    result = "Mittwoch";
-                    break;
-                case 4:
-                    result = "Donnerstag";
-                    break;
-                case 5:
-                    result = "Freitag";
-                    break;
-                case 6:
-                    result = "Samstag";
-                    break;
-                default:
-                    result = "";
-                    break;
-            }
-
-            finalResult = "Der " + day + "." + month + "." + year + " ist ein " + result + ".";
+            result = result_day[w_day];
         }
 
-        return finalResult;
+        return result;
     }
 }
