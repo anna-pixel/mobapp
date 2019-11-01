@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_2 + " DATETIME NOT NULL, " +
                 COL_3 + " VARCHAR(10) NOT NULL," +
                 COL_4 + " VARCHAR(10) NOT NULL," +
-                COL_5 + " VARCHAR(45) NOT NULL)");
+                COL_5 + " VARCHAR(45))");
     }
 
     @Override

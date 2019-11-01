@@ -44,13 +44,13 @@
         android:id="@+id/calcBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/clearBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearNumEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/commentEditText"
+        app:layout_constraintVertical_bias="0.167" />
 
     <Button
         android:id="@+id/helpBtn"
@@ -80,12 +80,25 @@
         android:id="@+id/clearBtn"
         android:layout_width="96dp"
         android:layout_height="48dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/clear_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/calcBtn"
-        app:layout_constraintTop_toBottomOf="@+id/yearNumEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/commentEditText"
+        app:layout_constraintVertical_bias="0.169" />
+
+    <EditText
+        android:id="@+id/commentEditText"
+        android:layout_width="275dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/comment_hint"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearNumEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
