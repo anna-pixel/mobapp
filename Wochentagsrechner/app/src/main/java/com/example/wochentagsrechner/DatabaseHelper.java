@@ -77,4 +77,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ArrayAdapter<DBList> arrayAdapter = new ArrayAdapter<DBList>(context,android.R.layout.simple_expandable_list_item_1, list);
         return arrayAdapter;
     }
+
+    public void delete(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] para = {""+id};
+        db.delete(TABLE_NAME, "" + COL_1 + "=?", para);
+    }
 }

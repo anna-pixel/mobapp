@@ -7,7 +7,6 @@ public class DBList implements Serializable {
     private int id, datum;
     private String eingabe, ergebnis, kommentar;
 
-
     public DBList(int id, int datum, String eingabe, String ergebnis, String kommentar) {
         this.id = id;
         this.datum = datum;
@@ -22,9 +21,8 @@ public class DBList implements Serializable {
 
     @Override
     public  String toString(){
-        return  eingabe + ":" + ergebnis;
+        return  eingabe + "\t\t\t\t\t\t\t" + ergebnis;
     }
-
 
     public int getId() {
         return id;
