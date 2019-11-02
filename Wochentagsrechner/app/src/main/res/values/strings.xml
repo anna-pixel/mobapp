@@ -3,7 +3,7 @@
     <string name="day_hint">Tag eingeben</string>
     <string name="month_hint">Monat eingeben</string>
     <string name="year_hint">Jahr eingeben</string>
-    <string name="comment_hint">Kommentar eingeben</string>
+    <string name="comment_hint">Kommentar eingeben (optional)</string>
     <string name="button_text">BERECHNEN</string>
     <string name="placeholder_result">Ergebnis</string>
     <string name="back_button">Zurück</string>
@@ -11,8 +11,13 @@
     <string name="toDB_Btn">Bisherige Berechnungen</string>
     <string name="no_input">Bitte Datum eingeben</string>
     <string name="no_valid_date">Bitte valides Datum eingeben!</string>
-    <string name="hilfe_content">Hier wird sich der content der Hilfeseite befinden! zB: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
-    <string name="clear_btn">Löschen</string>
+    <string name="hilfe_content"><b><big>Wochentagsberechnung</big></b>
+            \n\nDer Code unserer App <i>Wochentagsberechner</i> stützt sich auf eine weiterentwickelte Version der Gaußschen Wochentagsberechnungsformel.
+        \nDamit lassen sich die Wochentage zu einem beliebigen Datum berechnen.\n\n<u><b>Eingabeparameter &amp; zulässige Eingabeparamter</b></u>
+        \n\nDem Anwender stehen drei Eingabeparameter zur Verfügung:\n<b>Tag</b>, <b>Monat</b>, und <b>Jahr</b>.\n\nAls Eingabewerte werden Ziffern vorausgesetzt.
+        Der Wertebereich für den Paramter Tag ist 1 bis 31, für Monat 1 bis 12 und für das Jahr von 0 bis 9999.\nSollten die Eingabewerte nicht dem Wertebereich entsprechen, wird die Berechnung nicht durchgeführt.
+        Stattdessen wird der Anwender mit einer Meldung dazu aufgefordert, eine erneute, zulässige Eingabe zu tätigen.
+    </string><string name="clear_btn">Löschen</string>
     <string name="save_success">Berechnung gespeichert</string>
     <string name="save_fail">Berechnung konnte nicht gespeichert werden</string>
 </resources>
