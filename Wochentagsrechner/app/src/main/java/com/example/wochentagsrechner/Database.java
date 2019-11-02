@@ -1,15 +1,13 @@
 package com.example.wochentagsrechner;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class Database extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,16 +20,13 @@ public class Database extends AppCompatActivity implements View.OnClickListener 
 
         myDB = new DatabaseHelper(this);
 
-        Cursor res = myDB.getAllData();
+        ArrayAdapter<DBList> arrayAdapter = myDB.getAllData(this);
+        ListView dataListView = (ListView) findViewById(R.id.dataListView);
 
-        /*Intent intent = getIntent();
-        Cursor res = (Cursor) intent.getSerializableExtra("db");*/
-        if (res.getCount()== 0){
-            showMessage("Error", "No data found");
-            //Toast.makeText(this, "Keine Daten verfügbar", Toast.LENGTH_LONG).show();
-            return;
-        }
-        StringBuffer buffer = new StringBuffer();
+        dataListView.setAdapter(arrayAdapter);
+
+
+        /*StringBuffer buffer = new StringBuffer();
         while(res.moveToNext()){
             buffer.append("Datum: " + res.getString(1) + "\n" );
             buffer.append("Eingabe: " + res.getString(2) + "\n" );
@@ -39,25 +34,7 @@ public class Database extends AppCompatActivity implements View.OnClickListener 
             buffer.append("Kommentar: " + res.getString(4) + "\n\n" );
         }
 
-        showMessage("Data", buffer.toString());
-        RecyclerView list = (RecyclerView) findViewById(R.id.dbListView);
-        list.setAdapter(new RecyclerView.Adapter() {
-            @NonNull
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-            }
-
-            @Override
-            public int getItemCount() {
-                return 0;
-            }
-        });
+        showMessage("Data", buffer.toString());*/
 
         Button dbBackBtn = (Button) findViewById(R.id.dbBackBtn);
         dbBackBtn.setOnClickListener(this);

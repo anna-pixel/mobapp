@@ -5,8 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+
+
+    ArrayAdapter adapter;
 
     public static final String DATABASE_NAME = "Wochentage.db";
     public static final String TABLE_NAME = "wochentage_table";
@@ -15,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "EINGABE";
     public static final String COL_4 = "ERGEBNIS";
     public static final String COL_5 = "KOMMENTAR";
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -52,10 +59,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getAllData(){
+    public ArrayAdapter<DBList> getAllData(Context context){
+        ArrayList<DBList> list = new ArrayList<DBList>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
-        return res;
+        res.moveToFirst();
+        while (res.moveToNext()){
+            DBList l = new DBList();
+            l.setId(res.getInt(res.getColumnIndex(COL_1)));
+            l.setDatum(res.getInt(res.getColumnIndex(COL_2)));
+            l.setEingabe(res.getString(res.getColumnIndex(COL_3)));
+            l.setErgebnis(res.getString(res.getColumnIndex(COL_4)));
+            l.setKommentar(res.getString(res.getColumnIndex(COL_5)));
+            list.add(l);
+        }
+        ArrayAdapter<DBList> arrayAdapter = new ArrayAdapter<DBList>(context,android.R.layout.simple_expandable_list_item_1, list);
+        return arrayAdapter;
     }
 }

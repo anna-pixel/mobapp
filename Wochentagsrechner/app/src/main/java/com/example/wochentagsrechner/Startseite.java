@@ -106,9 +106,7 @@ public class Startseite extends AppCompatActivity implements View.OnClickListene
 
             case R.id.DBBtn:
                 //Aufruf der Datenbank-Seite
-                //Cursor res = myDB.getAllData();
                 Intent intent3 = new Intent(this, Database.class);
-                //intent3.putExtra("db", (Serializable) res);
                 startActivity(intent3);
                 break;
 
