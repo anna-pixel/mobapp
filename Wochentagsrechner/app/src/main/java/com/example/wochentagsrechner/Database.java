@@ -59,7 +59,7 @@ public class Database extends AppCompatActivity implements View.OnClickListener 
         DateFormat simple = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
         Date date = new Date(datum);
         builder.setTitle("" + simple.format(date));
-        builder.setMessage("Der " + eingabe + " ist ein " + ergebnis + ". \nKommentar: " + kommentar);
+        builder.setMessage("Der " + eingabe + " ist ein " + ergebnis + ". \nKommentar: \n" + kommentar);
         builder.show();
     }
 
