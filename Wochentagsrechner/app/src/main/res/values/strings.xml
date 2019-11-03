@@ -13,7 +13,7 @@
     <string name="no_valid_date">Bitte valides Datum eingeben!</string>
     <string name="hilfe_content"><b><big>Wochentagsberechnung</big></b>
             \n\nDer Code unserer App <i>Wochentagsberechner</i> stützt sich auf eine weiterentwickelte Version der Gaußschen Wochentagsberechnungsformel.
-        \nDamit lassen sich die Wochentage zu einem beliebigen Datum berechnen.\n\n<u><b>Eingabeparameter &amp; zulässige Eingabeparamter</b></u>
+        \nDamit lassen sich die Wochentage zu einem beliebigen Datum berechnen.\n\n<b>Eingabeparameter &amp; zulässige Wertebereiche</b>
         \n\nDem Anwender stehen drei Eingabeparameter zur Verfügung:\n<b>Tag</b>, <b>Monat</b>, und <b>Jahr</b> und optional einen Kommentar zur Berechnung.\n\nAls Eingabewerte werden Ziffern vorausgesetzt.
         Der Wertebereich für den Paramter Tag ist 1 bis 31, für Monat 1 bis 12 und für das Jahr von 0 bis 9999.\nSollten die Eingabewerte nicht dem Wertebereich entsprechen, wird die Berechnung nicht durchgeführt.
         Stattdessen wird der Anwender mit einer Meldung dazu aufgefordert, eine erneute, zulässige Eingabe zu tätigen.
